@@ -3,6 +3,7 @@ package MyProxy.DynamicProxy.test;
 import MyProxy.DynamicProxy.Account;
 import MyProxy.DynamicProxy.Impl.AccountImpl;
 import MyProxy.DynamicProxy.Impl.MyProxy;
+import MyProxy.DynamicProxy.Impl.UserImpl;
 import org.junit.Test;
 
 public class MyTest {
@@ -14,5 +15,14 @@ public class MyTest {
 
         account.addAccount();
         account.updateAccount();
+    }
+
+    @Test
+    public void test1(){
+        MyProxy myProxy = new MyProxy();
+        User user = (User) myProxy.getInstance(new UserImpl());
+
+        String nzm = user.update("nzm");
+        System.out.println(nzm);
     }
 }

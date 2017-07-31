@@ -1,22 +1,10 @@
-import jdk.nashorn.internal.parser.Token;
-import quickScrt.cheYiXing.util.test.OkHttpUtils;
-
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
  * Created by txsk on 2017/7/24.
  */
 public class Test {
-
-
-    @org.junit.Test
-    public void test1() {
-        String url = "http://localhost:8080/assetsMirror/companyBasicInfo/selectBiFinancing?companyId=efa71a10fc3749a4a0131221e09c1a2f";
-        String s = OkHttpUtils.get(url);
-        System.out.println(s);
-    }
 
     @org.junit.Test
     public void test2() {
