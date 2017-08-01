@@ -7,8 +7,8 @@ import MyProxy.DynamicProxy.test.User;
  */
 public class UserImpl implements User {
     @Override
-    public String update(String name) {
+    public String update(String name, String name2) {
         System.out.println("update");
-        return "==" + name;
+        return name + name2;
     }
 }

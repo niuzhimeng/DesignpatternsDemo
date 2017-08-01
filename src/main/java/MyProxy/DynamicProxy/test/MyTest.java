@@ -18,11 +18,11 @@ public class MyTest {
     }
 
     @Test
-    public void test1(){
+    public void test1() {
         MyProxy myProxy = new MyProxy();
         User user = (User) myProxy.getInstance(new UserImpl());
 
-        String nzm = user.update("nzm");
+        String nzm = user.update("nzm", " is good");
         System.out.println(nzm);
     }
 }

@@ -5,5 +5,5 @@ package MyProxy.DynamicProxy.test;
  */
 public interface User {
 
-    String update(String name);
+    String update(String name, String name2);
 }
