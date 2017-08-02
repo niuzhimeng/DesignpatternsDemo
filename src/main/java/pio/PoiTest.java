@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 批量测试抽象类
  * Created by Nzm on 2017/8/2.
  */
 public abstract class PoiTest {
@@ -24,7 +25,6 @@ public abstract class PoiTest {
         //当前单元格的元素
         String currentCell;
 
-        StringBuilder rowCell = new StringBuilder();
         // 创建对Excel工作簿文件的引用
         XSSFWorkbook workbook = new XSSFWorkbook(new FileInputStream(file));
 
@@ -46,7 +46,10 @@ public abstract class PoiTest {
                 cellList.add(currentCell);
             }
             String url = appendUrl(cellList);
-            OkHttpUtils.get(url);
+            cellList.clear();
+            //OkHttpUtils.get(url);
+            System.out.println(url);
+
         }
 
     }
@@ -65,6 +68,8 @@ public abstract class PoiTest {
      * @param account 账号
      * @param token   token
      */
-    public abstract void appendAccountInfo(String account, String token);
+    public String appendAccountInfo(String url, String account, String token) {
+        return url += "?account=" + account + "&accessToken=" + token;
+    }
 }
 
