@@ -1,19 +1,15 @@
 package pio;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.util.NumberToTextConverter;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.junit.Test;
-import pio.utils.OkHttpUtils;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +55,7 @@ public abstract class PoiTest {
             String url = appendUrl(rowList);
             //发送http请求
 //            String resultString = OkHttpUtils.get(url);
-            String resultString = "返回数据";
+            String resultString = "{假装有json}";
             StringBuilder parameterString = new StringBuilder();
             for (String parameter : rowList) {
                 parameterString.append(parameter).append("; ");
@@ -78,25 +74,30 @@ public abstract class PoiTest {
     /**
      * 导出excel
      *
-     * @param contentList 返回结果的list<入参,返回json>
+     * @param resultList 返回结果的list<入参,返回json>
      * @throws Exception
      */
-    public void write(List<String> contentList) throws Exception {
+    private void write(List<String> resultList) throws Exception {
 
         // 创建新的Excel 工作簿
         XSSFWorkbook workbook = new XSSFWorkbook();
         // 在Excel工作簿中建一工作表，其名为缺省值
         XSSFSheet sheet = workbook.createSheet();
 
-        int row_num = contentList.size();
+        int col_num = resultList.get(0).split(",")[0].split("; ").length;
+        int row_num = resultList.size();
         for (int i = 0; i < row_num; i++) {
             XSSFRow row = sheet.createRow(i);
-            String[] ss = contentList.get(i).split(",");
-            for (int j = 0; j < 2; j++) {
+            String[] ss = resultList.get(i).split(",");
+            String[] params = ss[0].split("; ");
+            for (int j = 0; j < col_num; j++) {
                 XSSFCell cell = row.createCell(j);
                 cell.setCellType(HSSFCell.CELL_TYPE_STRING);
-                cell.setCellValue(ss[j]);
+                cell.setCellValue(params[j]);
             }
+            XSSFCell cell = row.createCell(col_num + 1);
+            cell.setCellType(HSSFCell.CELL_TYPE_STRING);
+            cell.setCellValue(ss[1]);
         }
         // 新建一输出文件流
         FileOutputStream fOut = new FileOutputStream(new File("D:\\write.xlsx"));
