@@ -25,4 +25,11 @@ public class Test {
         inputStream.flatMap(Collection::stream).distinct().forEach(System.out::println);
 
     }
+
+    @org.junit.Test
+    public void test4(){
+        String str = "1,2,3,";
+        String[]ss = str.split(",");
+
+    }
 }
