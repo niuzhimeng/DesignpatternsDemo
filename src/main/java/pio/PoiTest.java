@@ -54,13 +54,13 @@ public abstract class PoiTest {
             String url = appendUrl(rowList);
             //发送http请求
 //            String resultString = OkHttpUtils.get(url);
-            String resultString = "{假装有json}";
+            String resultString = "{\"HasData\":true,\"Records\":[{\"Time\":\"2017-07-11 10:12:00\",\"Location\":\"迎宾路1001公里\",\"Reason\":\"机动车违反禁令标志指示的\",\"count\":\"100\",\"status\":\"0\",\"department\":null,\"Degree\":\"3\",\"Code\":\"1344\",\"Archive\":\"5110k80000157463\",\"Telephone\":null,\"Excutelocation\":null,\"Excutedepartment\":null,\"Category\":\"\",\"Latefine\":\"0\",\"Punishmentaccording\":null,\"Illegalentry\":null,\"Locationid\":5110,\"LocationName\":\"四川内江\",\"DataSourceID\":9981,\"RecordType\":\"实时数据\",\"Poundage\":\"0\",\"CanProcess\":\"0\",\"UniqueCode\":\"9c8281f2b502861e4dfa0701c58637bc\",\"SecondaryUniqueCode\":\"709346\",\"DegreePoundage\":\"0\",\"Other\":\"0\",\"CanprocessMsg\":null,\"CooperPoundge\":null,\"ActivePoundge\":\"-1\"}],\"ErrorCode\":0,\"Success\":true,\"ErrMessage\":\"\",\"ResultType\":\"实时数据\",\"LastSearchTime\":\"2017-07-21 10:17:10\",\"Other\":\"\"}";
             StringBuilder parameterString = new StringBuilder();
             for (String parameter : rowList) {
                 parameterString.append(parameter).append("; ");
             }
 
-            resultList.add(parameterString.toString() + "," + resultString);
+            resultList.add(parameterString.toString() + "#1#" + resultString);
             Thread.sleep(30);
             System.out.println(url);
             rowList.clear();
@@ -83,11 +83,11 @@ public abstract class PoiTest {
         // 在Excel工作簿中建一工作表，其名为缺省值
         XSSFSheet sheet = workbook.createSheet();
 
-        int col_num = resultList.get(0).split(",")[0].split("; ").length;
+        int col_num = resultList.get(0).split("#1#")[0].split("; ").length;
         int row_num = resultList.size();
         for (int i = 0; i < row_num; i++) {
             XSSFRow row = sheet.createRow(i);
-            String[] ss = resultList.get(i).split(",");
+            String[] ss = resultList.get(i).split("#1#");
             String[] params = ss[0].split("; ");
             for (int j = 0; j < col_num; j++) {
                 XSSFCell cell = row.createCell(j);

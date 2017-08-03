@@ -13,7 +13,7 @@ public class Test {
     @org.junit.Test
     public void test() throws Exception {
 
-        File file = new File("D:\\test.xlsx");
+        File file = new File("D:\\policeIdentity.xlsx");
         PoliceIdentity police = new PoliceIdentity();
         police.appendAccountInfo("nzm", "123");
         police.read(file);
