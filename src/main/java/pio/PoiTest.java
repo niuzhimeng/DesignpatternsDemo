@@ -1,6 +1,5 @@
 package pio;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.ss.util.NumberToTextConverter;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -92,11 +91,11 @@ public abstract class PoiTest {
             String[] params = ss[0].split("; ");
             for (int j = 0; j < col_num; j++) {
                 XSSFCell cell = row.createCell(j);
-                cell.setCellType(HSSFCell.CELL_TYPE_STRING);
+                cell.setCellType(XSSFCell.CELL_TYPE_STRING);
                 cell.setCellValue(params[j]);
             }
             XSSFCell cell = row.createCell(col_num + 1);
-            cell.setCellType(HSSFCell.CELL_TYPE_STRING);
+            cell.setCellType(XSSFCell.CELL_TYPE_STRING);
             cell.setCellValue(ss[1]);
         }
         // 新建一输出文件流
