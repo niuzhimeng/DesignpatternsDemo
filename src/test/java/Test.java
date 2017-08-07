@@ -27,9 +27,23 @@ public class Test {
     }
 
     @org.junit.Test
-    public void test4(){
-        String str = "1,2,3,";
-        String[]ss = str.split(",");
+    public void test4() {
+        String name = "牛智萌";
+        String phone = "15776701949";
+        String idCard = "230206199408270913";
+        phone = phone.replaceAll("(\\d{3})\\d{4}(\\d{4})", "$1****$2");
+        idCard = idCard.replaceAll("(\\d{4})\\d{10}(\\w{4})", "$1*****$2");
+        name = name.replaceAll("([\\u4e00-\\u9fa5]{1})(.*)", "$1" + createAsterisk(name.length()));
 
+        System.out.println(phone + "||||" + idCard);
+        System.out.println(name);
+    }
+
+    private String createAsterisk(int length) {
+        StringBuilder stringBuffer = new StringBuilder();
+        for (int i = 0; i < length - 1; i++) {
+            stringBuffer.append("*");
+        }
+        return stringBuffer.toString();
     }
 }
