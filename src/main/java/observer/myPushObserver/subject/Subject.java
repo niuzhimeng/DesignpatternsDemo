@@ -1,8 +1,6 @@
-package observer.subject;
+package observer.myPushObserver.subject;
 
-import observer.observer.MyObserver;
-
-import java.util.Observer;
+import observer.myPushObserver.observer.MyObserver;
 
 /**
  * 主题

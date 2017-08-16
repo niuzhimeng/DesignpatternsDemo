@@ -1,8 +1,8 @@
-package observer.test;
+package observer.myPushObserver.test;
 
-import observer.observer.impl.MyObserverOne;
-import observer.observer.impl.MyObserverTwo;
-import observer.subject.impl.SubjectFor3d;
+import observer.myPushObserver.observer.impl.MyObserverTwo;
+import observer.myPushObserver.observer.impl.MyObserverOne;
+import observer.myPushObserver.subject.impl.SubjectFor3d;
 import org.junit.Test;
 
 /**
@@ -16,6 +16,8 @@ public class MyTest {
 
         MyObserverOne one = new MyObserverOne(subjectFor3d);
         MyObserverTwo two = new MyObserverTwo(subjectFor3d);
+
+        //subjectFor3d.removeObserver(two);
 
         subjectFor3d.setMessage("666");
     }

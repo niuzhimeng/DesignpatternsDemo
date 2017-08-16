@@ -20,19 +20,16 @@ public abstract class MyRole {
      */
     private ISexBehavior iSexBehavior;
 
-    public MyRole setIAttackBehavior(IAttackBehavior iAttackBehavior) {
+    public void setIAttackBehavior(IAttackBehavior iAttackBehavior) {
         this.iAttackBehavior = iAttackBehavior;
-        return this;
     }
 
-    public MyRole setIDefendBehavior(IDefendBehavior iDefendBehavior) {
+    public void setIDefendBehavior(IDefendBehavior iDefendBehavior) {
         this.iDefendBehavior = iDefendBehavior;
-        return this;
     }
 
-    public MyRole setISexBehavior(ISexBehavior iSexBehavior) {
+    public void setISexBehavior(ISexBehavior iSexBehavior) {
         this.iSexBehavior = iSexBehavior;
-        return this;
     }
 
     public void attack() {

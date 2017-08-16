@@ -1,11 +1,10 @@
-package observer.subject.impl;
+package observer.myPushObserver.subject.impl;
 
-import observer.observer.MyObserver;
-import observer.subject.Subject;
+import observer.myPushObserver.subject.Subject;
+import observer.myPushObserver.observer.MyObserver;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observer;
 
 /**
  * Created by Nzm on 2017/8/4.
@@ -20,15 +19,16 @@ public class SubjectFor3d implements Subject {
 
     @Override
     public void registerObserver(MyObserver observer) {
-        observerList.add(observer);
+        if (observer == null)
+            throw new NullPointerException();
+        if (!observerList.contains(observer)) {
+            observerList.add(observer);
+        }
     }
 
     @Override
     public void removeObserver(MyObserver observer) {
-        int index = observerList.indexOf(observer);
-        if (index >= 0) {
-            observerList.remove(index);
-        }
+        observerList.remove(observer);
     }
 
     @Override

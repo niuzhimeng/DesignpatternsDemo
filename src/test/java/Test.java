@@ -46,4 +46,17 @@ public class Test {
         }
         return stringBuffer.toString();
     }
+
+    @org.junit.Test
+    public void test5() {
+        List<String> list = new ArrayList<>();
+        list.add("1");
+        list.add("2");
+
+        list.remove("3");
+        list.remove("2");
+        list.forEach(l->{
+            System.out.println(l);
+        });
+    }
 }
