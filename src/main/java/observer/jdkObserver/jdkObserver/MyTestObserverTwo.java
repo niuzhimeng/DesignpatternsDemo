@@ -22,7 +22,7 @@ public class MyTestObserverTwo implements Observer {
             MyTestSubject myTestSubject = (MyTestSubject) o;
             Integer price = myTestSubject.getPrice();
             if (price < 100) {
-                System.out.println("是two满意的价位，该商品为： " + arg + ", 当前价格为：" + price);
+                System.out.println("是two满意的价位，该商品为： " + myTestSubject.getName() + ", 当前价格为：" + price);
             }
             if (price >= 100) {
                 System.out.println("价格太高，不关心是什么商品");

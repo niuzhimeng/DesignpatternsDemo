@@ -22,7 +22,7 @@ public class MyTestSubject extends Observable {
         this.name = name;
         this.price = price;
         this.setChanged();
-        this.notifyObservers(name);
+        this.notifyObservers();
     }
 
     public Integer getPrice() {

@@ -124,7 +124,7 @@ public abstract class PoiTest {
      * @param token   token
      */
     protected String appendAccountInfo(String url, String account, String token) {
-        return url += "?account=" + account + "&accessToken=" + token;
+        return url + "?account=" + account + "&accessToken=" + token;
     }
 }
 

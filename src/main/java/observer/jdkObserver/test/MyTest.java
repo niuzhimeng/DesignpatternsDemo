@@ -17,6 +17,6 @@ public class MyTest {
         MyTestObserver observer = new MyTestObserver(myTestSubject);
         MyTestObserverTwo testObserverTwo = new MyTestObserverTwo(myTestSubject);
 
-        myTestSubject.setMessage("篮球",90);
+        myTestSubject.setMessage("篮球",9);
     }
 }
