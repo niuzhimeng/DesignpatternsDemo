@@ -3,7 +3,6 @@ package factory.abstractFactory.product.impl;
 import factory.abstractFactory.product.Phone;
 
 /**
- *
  * 戴尔手机
  * Created by Nzm on 2017/8/24.
  */
