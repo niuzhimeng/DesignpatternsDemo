@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -55,8 +56,17 @@ public class Test {
 
         list.remove("3");
         list.remove("2");
-        list.forEach(l->{
+        list.forEach(l -> {
             System.out.println(l);
+        });
+    }
+
+    @org.junit.Test
+    public void test6() {
+        List<String> list = Arrays.asList("1", "1", "2", "2");
+        list = list.stream().distinct().collect(Collectors.toList());
+        list.forEach(s->{
+            System.out.println(s);
         });
     }
 }
