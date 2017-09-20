@@ -1,3 +1,8 @@
+import org.apache.commons.lang3.StringUtils;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.MonthDay;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -14,17 +19,6 @@ public class Test {
 
         boolean before = Calendar.getInstance(TimeZone.getTimeZone("GMT+8")).before(expireTime);
         System.out.println(before);
-    }
-
-    @org.junit.Test
-    public void test3() {
-        Stream<List<Integer>> inputStream = Stream.of(
-                Arrays.asList(1, 2),
-                Arrays.asList(2, 3),
-                Arrays.asList(3, 4)
-        );
-        inputStream.flatMap(Collection::stream).distinct().forEach(System.out::println);
-
     }
 
     @org.junit.Test
@@ -65,8 +59,32 @@ public class Test {
     public void test6() {
         List<String> list = Arrays.asList("1", "1", "2", "2");
         list = list.stream().distinct().collect(Collectors.toList());
-        list.forEach(s->{
-            System.out.println(s);
-        });
+        list.forEach(s -> System.out.println(s));
     }
+
+    @org.junit.Test
+    public void test7() {
+        LocalDateTime today = LocalDateTime.now();
+
+        LocalDate dateOfBirth = LocalDate.of(2010, 9, 12);
+        MonthDay birthday = MonthDay.of(dateOfBirth.getMonth(), dateOfBirth.getDayOfMonth());
+        MonthDay currentMonthDay = MonthDay.from(today);
+        if (currentMonthDay.equals(birthday)) {
+            System.out.println("Many Many happy returns of the day !!");
+        } else {
+            System.out.println("Sorry, today is not your birthday");
+        }
+    }
+
+    @org.junit.Test
+    public void test8() {
+        Stream<List<Integer>> inputStream = Stream.of(
+                Collections.singletonList(1),
+                Arrays.asList(2, 3),
+                Arrays.asList(4, 5, 6)
+        );
+        Stream<Integer> outputStream = inputStream.flatMap(Collection::stream);
+        outputStream.forEach(System.out::println);
+    }
+
 }
