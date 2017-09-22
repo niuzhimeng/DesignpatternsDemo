@@ -1,4 +1,4 @@
-package MyProxy.DynamicProxy.test;
+package MyProxy.DynamicProxy;
 
 /**
  * Created by Nzm on 2017/7/31.

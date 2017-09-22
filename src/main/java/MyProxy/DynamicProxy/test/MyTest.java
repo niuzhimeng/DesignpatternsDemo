@@ -4,6 +4,7 @@ import MyProxy.DynamicProxy.Account;
 import MyProxy.DynamicProxy.Impl.AccountImpl;
 import MyProxy.DynamicProxy.Impl.MyProxy;
 import MyProxy.DynamicProxy.Impl.UserImpl;
+import MyProxy.DynamicProxy.User;
 import org.junit.Test;
 
 public class MyTest {

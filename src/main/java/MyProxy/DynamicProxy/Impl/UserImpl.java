@@ -1,6 +1,6 @@
 package MyProxy.DynamicProxy.Impl;
 
-import MyProxy.DynamicProxy.test.User;
+import MyProxy.DynamicProxy.User;
 
 /**
  * Created by Nzm on 2017/7/31.

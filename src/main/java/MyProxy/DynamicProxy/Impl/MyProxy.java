@@ -19,8 +19,7 @@ public class MyProxy implements InvocationHandler {
     public Object getInstance(Object target) {
         this.target = target;
         return Proxy.newProxyInstance(target.getClass().getClassLoader()
-                , target.getClass().getInterfaces()
-                , this);
+                , target.getClass().getInterfaces(), this);
     }
 
     /**
