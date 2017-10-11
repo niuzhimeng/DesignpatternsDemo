@@ -1,6 +1,5 @@
 package template.test;
 
-import org.junit.Test;
 import template.impl.Coffee;
 import template.impl.Tea;
 

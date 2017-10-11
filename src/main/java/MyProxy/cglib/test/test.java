@@ -2,7 +2,6 @@ package MyProxy.cglib.test;
 
 import MyProxy.cglib.CgUser;
 import MyProxy.cglib.myInterceptor;
-import org.assertj.core.internal.cglib.proxy.Enhancer;
 import org.junit.Test;
 
 /**
@@ -11,12 +10,9 @@ import org.junit.Test;
 public class test {
 
     @Test
-    public void test(){
-        Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(CgUser.class);
-        enhancer.setCallback(new myInterceptor());
-
-        CgUser cgUser = (CgUser) enhancer.create();
+    public void test() {
+        myInterceptor myInterceptor = new myInterceptor(new CgUser());
+        CgUser cgUser = (CgUser) myInterceptor.getProxyInstance();
         cgUser.add();
     }
 }
