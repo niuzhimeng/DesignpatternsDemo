@@ -60,6 +60,7 @@ public class CalendarUtils {
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone(TIME_ZONE));
         Date daystart = formatter.parse(date);
         calendar.setTime(daystart);
+        System.out.println(" 111 ");
         return calendar;
 
     }
