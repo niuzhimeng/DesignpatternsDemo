@@ -48,7 +48,7 @@ public class CalendarUtils {
      * @return
      * @throws Exception
      */
-    public static Calendar dateToCalendar(String date) throws Exception {
+    public static Calendar dateToCalendarDevelop(String date) throws Exception {
         DateFormat formatter = null;
         if (date.length() > 11) {
             formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
