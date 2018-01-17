@@ -55,12 +55,13 @@ public class CalendarUtils {
         } else {
             formatter = new SimpleDateFormat("yyyy-MM-dd");
         }
-        if (date.contains("年"))
+        if (date.contains("年")) {
             date = date.replaceAll("年", "-").replaceAll("月", "-").replaceAll("日", "");
+        }
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone(TIME_ZONE));
         Date daystart = formatter.parse(date);
         calendar.setTime(daystart);
-        System.out.println(" 111 ");
+        System.out.println(" master新增 ");
         return calendar;
 
     }
