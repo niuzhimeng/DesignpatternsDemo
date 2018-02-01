@@ -1,20 +1,21 @@
-import org.apache.commons.lang3.StringUtils;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import gsontest.vo.Adty;
+import gsontest.vo.MyGsonTest;
 import org.apache.log4j.Logger;
 
+import java.math.BigDecimal;
+import java.net.NetworkInterface;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.MonthDay;
-import java.time.Period;
+import java.time.*;
 import java.time.temporal.TemporalAdjusters;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import static javax.swing.text.html.HTML.Tag.OL;
 
 /**
  * Created by txsk on 2017/7/24.
@@ -263,4 +264,94 @@ public class Test {
         Matcher matcher = p.matcher(content);
         System.out.println(matcher.matches());
     }
+
+    @org.junit.Test
+    public void test23() {
+        LocalDate localDate = LocalDate.now();
+        int year = localDate.getYear();
+        int monthValue = localDate.getMonth().getValue();
+        int dayOfMonth = localDate.getDayOfMonth();
+        System.out.println(year);
+        System.out.println(monthValue);
+        System.out.println(dayOfMonth);
+    }
+
+    @org.junit.Test
+    public void test24() {
+        List<String> accountList = new ArrayList<>();
+        accountList.add("1");
+        accountList.add("2");
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+        String json = gson.toJson(accountList);
+        System.out.println(json);
+    }
+
+    @org.junit.Test
+    public void test25() {
+        Gson gson = new GsonBuilder()
+                //.enableComplexMapKeySerialization() //支持Map的key为复杂对象的形式
+                //.serializeNulls()
+
+                // .registerTypeAdapter(Date.class, new DateTypeAdapter())
+                .registerTypeAdapter(Date.class, new Adty())
+                .setDateFormat("yyyy-MM-dd HH:mm:ss")//时间转化为特定格式
+                .create();
+        Gson gson1 = new Gson();
+        String json = "{\n" +
+                "    \"name\": \"nzm\",\n" +
+                "    \"age\": \"23\",\n" +
+                "    \"dateDate\": \"1516586113\"\n" +
+                "}";
+        MyGsonTest vo = gson.fromJson(json, new TypeToken<MyGsonTest>() {
+        }.getType());
+
+        System.out.println(vo.toString());
+    }
+
+
+    @org.junit.Test
+    public void test26() {
+        BigDecimal one = new BigDecimal(100);
+        BigDecimal two = new BigDecimal(7);
+        System.out.println(one.divide(two, 2, BigDecimal.ROUND_HALF_UP));
+    }
+
+    @org.junit.Test
+    public void test27() {
+        try {
+            Enumeration<NetworkInterface> enumeration = NetworkInterface.getNetworkInterfaces();
+            while (enumeration.hasMoreElements()) {
+                StringBuffer stringBuffer = new StringBuffer();
+                NetworkInterface networkInterface = enumeration.nextElement();
+                if (networkInterface != null) {
+                    byte[] bytes = networkInterface.getHardwareAddress();
+                    if (bytes != null) {
+                        for (int i = 0; i < bytes.length; i++) {
+                            if (i != 0) {
+                                stringBuffer.append("-");
+                            }
+                            int tmp = bytes[i] & 0xff; // 字节转换为整数
+                            String str = Integer.toHexString(tmp);
+                            if (str.length() == 1) {
+                                stringBuffer.append("0" + str);
+                            } else {
+                                stringBuffer.append(str);
+                            }
+                        }
+                        String mac = stringBuffer.toString().toUpperCase();
+                        System.out.println(mac);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @org.junit.Test
+    public void test28(){
+        System.err.println("qweqweewqeqw");
+        System.out.println("qweqweewqeqw");
+    }
+
 }
