@@ -4,6 +4,7 @@ import java.io.*;
  * Created by Nzm on 2017/11/23.
  */
 public class Log {
+
     public static void main(String[] args) {
         String key = "4element";
         BufferedReader bufferedReader = null;

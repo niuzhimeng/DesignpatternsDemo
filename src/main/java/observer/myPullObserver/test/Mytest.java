@@ -16,7 +16,7 @@ public class Mytest {
         //注册
         MyPullObserverImpl observer = new MyPullObserverImpl(mySubject);
         //更新状态
-        mySubject.setMessage("123","。。。。。。。。。");
+        mySubject.setMessage("音乐","。。。。。。。。。");
 
     }
 }

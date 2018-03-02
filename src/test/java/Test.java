@@ -4,14 +4,21 @@ import com.google.gson.reflect.TypeToken;
 import gsontest.vo.Adty;
 import gsontest.vo.MyGsonTest;
 import org.apache.log4j.Logger;
+import utils.CalendarUtils;
+import utils.EncryptUtils;
 
 import java.math.BigDecimal;
 import java.net.NetworkInterface;
+import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.MonthDay;
+import java.time.Period;
 import java.time.temporal.TemporalAdjusters;
 import java.util.*;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -349,9 +356,52 @@ public class Test {
     }
 
     @org.junit.Test
-    public void test28(){
-        System.err.println("qweqweewqeqw");
-        System.out.println("qweqweewqeqw");
+    public void test28() {
+        System.out.println(CalendarUtils.class);
+        try {
+            Class<?> utils = Class.forName("utils.CalendarUtils");
+            try {
+                CalendarUtils o = (CalendarUtils) utils.newInstance();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @org.junit.Test
+    public void test29() throws NoSuchAlgorithmException {
+        String s = EncryptUtils.MD5("e10adc3949ba59abbe56e057f20f883e", "jikailu");
+        System.out.println(s);
+    }
+
+    @org.junit.Test
+    public void test30() throws InterruptedException {
+        LinkedBlockingQueue<Integer> queue = new LinkedBlockingQueue<>();
+        queue.put(1);
+        queue.put(2);
+        Integer take = queue.take();
+        System.out.println(take);
+        int a = 2140000000;
+    }
+
+    @org.junit.Test
+    public void test31() {
+        int[] ints = {1, 8, 5, 4, 3};
+        for (int i = 0; i < ints.length; i++) {
+            for (int j = 0; j < ints.length; j++) {
+                if (ints[j] > ints[i]) {
+                    int temp = ints[i];
+                    ints[i] = ints[j];
+                    ints[j] = temp;
+                }
+            }
+        }
+        for (int i : ints) {
+            System.out.println(i);
+        }
     }
 
 }
