@@ -105,6 +105,9 @@ public class Test {
         outputStream.forEach(System.out::println);
     }
 
+    /**
+     * 快速排序
+     */
     @org.junit.Test
     public void test10() {
         int[] a = {8, 9, 3, 6, 4, 7, 6, 1};
