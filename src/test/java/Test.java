@@ -407,4 +407,46 @@ public class Test {
         }
     }
 
+
+    @org.junit.Test
+    public void test32() {
+
+        System.out.println(nzm(null));
+    }
+
+
+    private static int nzm(String str) {
+        try {
+            return str.length();
+        } catch (Exception e1) {
+            return 1;
+        } finally {
+            return 4;
+        }
+    }
+
+    @org.junit.Test
+    public void test33(){
+        List<String> list = new ArrayList<>();
+        list.add("AAAA");
+        list.add("AAAA");
+        list.add("AAAA");
+        list.add("BBBB");
+        list.add("BBBB");
+        list.add("BBBB");
+        list.add("CCCC");
+        list.add("CCCC");
+        list.add("CCCC");
+        list.add("DDDD");
+//        List<String> collect = list.stream().distinct().collect(Collectors.toList());
+//        collect.forEach(System.out::println);
+        List<String> a1 = list.stream().filter(a -> !a.contains("A")).collect(Collectors.toList());
+        a1.forEach(System.out::println);
+    }
+
+    @org.junit.Test
+    public void test34(){
+        System.out.println(6 ^ 2);
+    }
+
 }
